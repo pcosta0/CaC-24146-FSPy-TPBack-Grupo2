@@ -22,14 +22,35 @@ En este proyecto práctico, se aplicarán los conocimientos adquiridos en desarr
 - Iniciar servidor:  ```python run.py```
 
 ### Endpoints disponibles:
-Raiz:  
+#### Raiz:  
 - Saludo: ```/```, Método:```GET```
 
-Categorias:
-- Listar categorias:   ```/api/categorias/```, Método ```GET```
-- Listar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, Método:```GET```
-- Modificar una categoria:   ```/api/categorias/```, Método:```POST```
-- Eliminar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, Método:```DELETE```
+#### Categorias:
+- Listar categorias:   ```/api/categorias/```, método ```GET```
+- Listar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, método:```GET```
+- Crear una nueva categoria:    ```/api/categorias/```, método ```POST```, formato de datos en cuerpo de solicitud: ```JSON```
+
+  Ejemplo:
+```
+{
+  "nombre": "Nombre de categoria nueva",
+  "descripcion": "Descripcion de categoria...",
+  "activo": 1
+}
+```
+
+- Modificar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, método:```PUT```, formato de datos en cuerpo de solicitud: ```JSON```
+
+  Ejemplo:
+```
+{
+  "nombre": "Nombre modificado de categoria",
+  "descripcion": "Descripcion modificada de categoria...",
+  "activo": 0
+}
+```
+
+- Eliminar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, método:```DELETE```
 
 ### Integrantes
 - Julio Cesar Garcia
