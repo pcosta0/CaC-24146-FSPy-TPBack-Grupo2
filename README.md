@@ -15,6 +15,22 @@ En este proyecto práctico, se aplicarán los conocimientos adquiridos en desarr
 - La página deberá subirse a un servidor on-line para poder ser navegada por el Instructor.
 - El backend debe estar integrado con un frontend
 
+### Instrucciones
+- Clonar el repositorio:  ```git clone https://github.com/pcosta0/CaC-24146-FSPy-TPBack-Grupo2.git```
+- Crear y activar un entorno virtual
+- Instalar librerias:  ```pip install -r requirements.txt```
+- Iniciar servidor:  ```python run.py```
+
+### Endpoints disponibles:
+Raiz:  
+- Saludo: ```/```, Método:```GET```
+
+Categorias:
+- Listar categorias:   ```/api/categorias/```, Método ```GET```
+- Listar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, Método:```GET```
+- Modificar una categoria:   ```/api/categorias/```, Método:```POST```
+- Eliminar una categoria especificando su id:   ```/api/categorias/<int:categoria_id>```, Método:```DELETE```
+
 ### Integrantes
 - Julio Cesar Garcia
 - Lara Artaza
