@@ -4,11 +4,11 @@ import sqlite3
 from flask import g
 from dotenv import load_dotenv
 
-# Determina si se usa una base de datos local SQLite o remota MySQL
+# Determina si se usa una base de datos local SQLite (True) o remota MySQL (False)
 # DB_LOCAL = False
 DB_LOCAL = True
 
-# Determina el placeholder de los parámetros para SQLite o MySQL
+# Determina el placeholder de los parámetros para SQLite (?) o MySQL (%.)
 PH_PAR = "?" if DB_LOCAL else "%s"
 
 # Cargar variables de entorno desde el archivo .env
@@ -44,7 +44,7 @@ def get_db():
     if "db" not in g:
         # Crear una nueva conexión a la base de datos y guardarla en 'g'
         if DB_LOCAL: # local o remota?
-            init_db_local()
+            init_db_local() # inicializa la bd sqlite
             g.db = sqlite3.connect("datos.db")
         else:
             g.db = mysql.connector.connect(**DATABASE_CONFIG)
