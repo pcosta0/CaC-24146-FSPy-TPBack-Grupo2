@@ -1,15 +1,21 @@
 from flask import jsonify, request
 from app.models import Categoria
 
+
 # Hola mundo en raiz
 def index():
-    return '<h1>Hola mundo con flask 🐍</h1>'
+    return "<h1>Hola mundo con flask 🐍</h1>"
+
 
 # Obtener todas las categorias
 def get_all_categorias():
+    # obtiene todas las categorias
     categorias = Categoria.get_all()
+    # crea una lista a partir de las categorias obtenidas
     list_categorias = [movie.serialize() for movie in categorias]
+    # retorna la lista en formato jscn y un codigo de resultado
     return jsonify(list_categorias), 200
+
 
 # Crear una categoria nueva
 def create_categoria():
@@ -17,32 +23,34 @@ def create_categoria():
     data = request.json
     # crea un objeto categoria con los datos recibidos
     new_categoria = Categoria(
-        nombre=data['nombre'],
-        descripcion=data['descripcion'],
-        activo=data['activo'],
+        nombre=data["nombre"],
+        descripcion=data["descripcion"],
+        activo=data["activo"],
     )
     # guarda la categoria creada
     new_categoria.save()
-    # retorna un mensaje y un resultado 
-    return jsonify({'message':'Categoria creada con exito'}), 201
-    
+    # retorna un mensaje y un resultado
+    return jsonify({"message": "Categoria creada con exito"}), 201
+
+
 # Actualiza una categoria
 def update_categoria(categoria_id):
     # obtiene la categorias a modificar mediante su id
     categoria = Categoria.get_by_id(categoria_id)
     # si no se encuentra devuelve un mensaje y un código de error
     if not categoria:
-        return jsonify({'message': 'Categoria no encontrada'}), 404
+        return jsonify({"message": "Categoria no encontrada"}), 404
     # obtiene los datos de la categoria en formato json desde la peticion
     data = request.json
     # actualiza los campos de la categoria desde data
-    categoria.nombre = data['nombre']
-    categoria.descripcion = data['descripcion']
-    categoria.activo = data['activo']
+    categoria.nombre = data["nombre"]
+    categoria.descripcion = data["descripcion"]
+    categoria.activo = data["activo"]
     # guarda los cambios
     categoria.save()
     # retorna un mensaje y un código de estado
-    return jsonify({'message': 'Categoria actualizada exitosamente'})
+    return jsonify({"message": "Categoria actualizada exitosamente"}), 200
+
 
 # Obtiene una categoria pod su id
 def get_categoria(categoria_id):
@@ -50,9 +58,10 @@ def get_categoria(categoria_id):
     categoria = Categoria.get_by_id(categoria_id)
     # si no se encuantra se retorna un mensaje y un código de error
     if not categoria:
-        return jsonify({'message': 'categoria no encontrada'}), 404
+        return jsonify({"message": "categoria no encontrada"}), 404
     # si se encontró entonces se devuelve la categoria serializada y un código de estado ok
     return jsonify(categoria.serialize()), 200
+
 
 # Elimina una categoria por su id
 def delete_categoria(categoria_id):
@@ -60,8 +69,8 @@ def delete_categoria(categoria_id):
     categoria = Categoria.get_by_id(categoria_id)
     # si no se encuantra se devuelve un mensaje y código de error
     if not categoria:
-        return jsonify({'message': 'categoria no encontrada'}), 404
+        return jsonify({"message": "categoria no encontrada"}), 404
     # se elimina la categoria de la bd
     categoria.delete()
     # se devuelve un mensaje y un código ok
-    return jsonify({'message': 'categoria eliminada exitosamente'}), 200
+    return jsonify({"message": "categoria eliminada exitosamente"}), 200
