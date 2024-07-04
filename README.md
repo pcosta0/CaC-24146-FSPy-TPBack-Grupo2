@@ -17,7 +17,7 @@ En este proyecto práctico, se aplicarán los conocimientos adquiridos en desarr
 
 ### Instrucciones
 - Clonar el repositorio:  ```git clone https://github.com/pcosta0/CaC-24146-FSPy-TPBack-Grupo2.git```
-- Crear y activar un entorno virtual
+- Crear y activar un entorno virtual python para el proyecto.
 - Instalar librerias:  ```pip install -r requirements.txt```
 - Iniciar servidor:  ```python run.py```
 
