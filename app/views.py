@@ -12,7 +12,7 @@ def get_all_categorias():
     # obtiene todas las categorias
     categorias = Categoria.get_all()
     # crea una lista a partir de las categorias obtenidas
-    list_categorias = [movie.serialize() for movie in categorias]
+    list_categorias = [categoria.serialize() for categoria in categorias]
     # retorna la lista en formato jscn y un codigo de resultado
     return jsonify(list_categorias), 200
 
